@@ -1,14 +1,21 @@
-# MyOS
+# SnakeOS
+(Based on MyOS by OmarFarooq908)
 
-MyOS is a simple educational operating system developed for learning purposes. It serves as a foundation for understanding kernel development and the basics of OS architecture. This project showcases how to set up a minimal bootloader, kernel, and the structure necessary to build an ISO image that can be booted using GRUB.
+SnakeOS is a simple educational operating system developed for learning purposes. It serves as a foundation for understanding kernel development and the basics of OS architecture. This project showcases how to set up a minimal bootloader, kernel, and the structure necessary to build an ISO image that can be booted using GRUB.
+
+## TODO
+- update README
+- add some form of graphic environment (unless I just make CLI snake, maybe)
+- actually code snake
+easier said than done
 
 ## Table of Contents
 
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Directory Structure](#directory-structure)
-- [Building MyOS](#building-myos)
-- [Running MyOS](#running-myos)
+- [Building SnakeOS](#building-SnakeOS)
+- [Running SnakeOS](#running-SnakeOS)
 - [License](#license)
 
 ## Features
@@ -20,7 +27,7 @@ MyOS is a simple educational operating system developed for learning purposes. I
 
 ## Getting Started
 
-To get started with MyOS, ensure you have the following tools installed on your system:
+To get started with SnakeOS, ensure you have the following tools installed on your system:
 
 - `gcc` (GNU Compiler Collection)
 - `nasm` (Netwide Assembler)
@@ -57,11 +64,11 @@ The project is organized as follows:
 │   ├── port_io.c     # Port I/O operations
 │   └── print.c       # Print functions for kernel
 ├── Makefile          # Build script for the project
-├── myos.iso          # Output ISO file
+├── SnakeOS.iso          # Output ISO file
 └── README.md         # This README file
 ```
 
-## Building MyOS
+## Building SnakeOS
 
 To build the operating system, simply run the following command in the terminal:
 
@@ -69,14 +76,14 @@ To build the operating system, simply run the following command in the terminal:
 make
 ```
 
-This command will compile the necessary files, link them, and create an ISO image named `myos.iso`.
+This command will compile the necessary files, link them, and create an ISO image named `SnakeOS.iso`.
 
-## Running MyOS
+## Running SnakeOS
 
-Once the build process is complete, you can run MyOS in a virtual machine. For example, using QEMU, run:
+Once the build process is complete, you can run SnakeOS in a virtual machine. For example, using QEMU, run:
 
 ```bash
-qemu-system-x86_64 -cdrom myos.iso
+qemu-system-x86_64 -cdrom SnakeOS.iso
 ```
 
 This command will boot your operating system in a QEMU emulator.
