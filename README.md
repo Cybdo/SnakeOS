@@ -34,6 +34,7 @@ To get started with SnakeOS, ensure you have the following tools installed on yo
 - `nasm` (Netwide Assembler)
 - `grub` (GRand Unified Bootloader)
 - `make` (Build automation tool)
+- `xorriso` (iso maker)
 
 ### Prerequisites
 
@@ -41,7 +42,7 @@ Make sure to install the necessary dependencies. On Ubuntu, you can use:
 
 ```bash
 sudo apt-get update
-sudo apt-get install build-essential nasm grub2
+sudo apt-get install build-essential nasm grub2 xorriso
 ```
 
 ## Directory Structure
@@ -84,7 +85,7 @@ This command will compile the necessary files, link them, and create an ISO imag
 Once the build process is complete, you can run SnakeOS in a virtual machine. For example, using QEMU, run:
 
 ```bash
-qemu-system-x86_64 -cdrom SnakeOS.iso
+qemu-system-x86_64 -cdrom myos.iso
 ```
 
 This command will boot your operating system in a QEMU emulator.
