@@ -7,6 +7,7 @@ SnakeOS is a simple educational operating system developed for learning purposes
 - update README
 - add some form of graphic environment (unless I just make CLI snake, maybe)
 - actually code snake
+
 easier said than done
 
 ## Table of Contents
