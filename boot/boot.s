@@ -1,9 +1,18 @@
 # Multiboot header
 .section .multiboot
     .align 4
-    .long 0x1BADB002               # magic number for Multiboot
-    .long 0x0                      # flags (we use 0 here for simplicity)
-    .long -(0x1BADB002)            # checksum to make the header zero
+    .long 0x1BADB002          # magic
+    .long 0x00000003          # flags: request memory info and video mode
+    .long -(0x1BADB002 + 0x00000003) # checksum
+    .long 0                   # header_addr (optional)
+    .long 0                   # load_addr (optional)
+    .long 0                   # load_end_addr (optional)
+    .long 0                   # bss_end_addr (optional)
+    .long 0                   # entry_addr (optional)
+    .long 0                   # mode_type (0 = linear framebuffer)
+    .long 1024                # width
+    .long 768                 # height
+    .long 32                  # depth (bits per pixel)
 
 # Entry point
 .section .text

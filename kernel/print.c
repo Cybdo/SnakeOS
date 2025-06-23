@@ -1,15 +1,23 @@
-#include "include/print.h"
-#include "include/kernel.h"
+#include <stdint.h>
+#include "print.h"
 
-// Video memory location
-#define VIDEO_MEMORY 0xB8000
 
-// Function to print a string to the screen
-void print_string(const char *str) {
-    volatile char *video_memory = (char *)VIDEO_MEMORY;
-    while (*str) {
-        *video_memory++ = *str++;   // Character
-        *video_memory++ = 0x07;      // Attribute byte (light gray on black)
+// Function to print a string to VGA text mode
+void print_string(const char* str) {
+    int i = 0;
+    while (str[i] != '\0') {
+        vga_buffer[i] = (uint16_t)str[i] | (0x0F << 8); // Character + color attribute
+        i++;
+    }
+}
+//function to clear screen
+void clear_screen(uint8_t color) {
+    for (int i = 0; i < VGA_WIDTH * VGA_HEIGHT; i++) {
+        vga_buffer[i] = ' ' | (color << 8); // Clear with space character and specified color
     }
 }
 
+void clean_print(const char* str) {
+    clear_screen(0);
+    print_string(str);
+}
