@@ -5,7 +5,7 @@
 #include "random.c"
 #include "snake.c"
 
-int ms_clock = 0;
+unsigned int ms_clock = 0;
 
 
 
@@ -61,11 +61,10 @@ void fill_screen(uint32_t color, multiboot_info_t* mb_info) {
 void delay_ms(int milliseconds) {
     for (int i = 0; i < milliseconds; i++)
     {
-        for (volatile int j = 0; j < 270000; j++) {
+        for (volatile int j = 0; j < 270000; j++);
             // shitty delay loop which will be influenced by the CPU speed
             // maybe replace at some point with a better delay function
-            // accurate-ish for my machine rn
-        }
+            // accurate-ish for my machine
     }
 }
 
@@ -77,19 +76,20 @@ void kernel_main(multiboot_info_t* mb_info) {
     //else
     //{
         // Fallback to text mode if framebuffer is not available
-        print_string("Framebuffer not available, running in text mode.");
+        print_string("Framebuffer not available, running in text mode.",0);
         delay_ms(1000);
         clean_print("Test sleep");
         clear_screen(0);
-        print_string("                              SNAKE GAME BY CYBDO!                              ");
+        print_string("                                                 SNAKE GAME BY CYBDO! ",0);
         //draw_snake(VGA_WIDTH,VGA_HEIGHT);
         //draw_snake(0,VGA_HEIGHT);
         //draw_snake(VGA_WIDTH,0);
-
+        draw_border();
 
     //}
     while (1) {
-        if (ms_clock % 1000 == 0) draw_snake(randint(0, VGA_WIDTH - 1, ms_clock), randint(0, VGA_HEIGHT - 1, ms_clock));
+        if (ms_clock % (500- snake_length)  == 0 && 500- snake_length >= 250) snake_tick(ms_clock);
+        else if (500- snake_length <= 250) {clear_screen(0); print_string("You Win!",0); while (1);}
         delay_ms(1);
         ms_clock++;
     }

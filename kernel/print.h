@@ -1,7 +1,7 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-void print_string(const char *str);
+void print_string(const char *str, int position);
 void clear_screen(uint8_t color);
 void clean_print(const char *str);
 

@@ -1,6 +1,5 @@
 # Multiboot header
-.section .multiboot
-    .align 4
+.section .multiboot, "a", @progbits
     .long 0x1BADB002          # magic
     .long 0x00000003          # flags: request memory info and video mode
     .long -(0x1BADB002 + 0x00000003) # checksum

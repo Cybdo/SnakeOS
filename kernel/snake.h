@@ -7,9 +7,12 @@
 #include <stdint.h>
 #include "print.h"
 #include "port_io.h"
+#include "random.h"
 
 #define SNAKE_CHAR '@' // Character to represent the snake
 #define SNAKE_COLOR 0xAA // Green color for the snake
 void draw_snake(int x, int y);
-
+void draw_border();
+int snake_length;
+void snake_tick();
 #endif //SNAKE_H

@@ -3,10 +3,10 @@
 
 
 // Function to print a string to VGA text mode
-void print_string(const char* str) {
+void print_string(const char* str, int position) {
     int i = 0;
     while (str[i] != '\0') {
-        vga_buffer[i] = (uint16_t)str[i] | (0x0F << 8); // Character + color attribute
+        vga_buffer[position + i] = (uint16_t)str[i] | (0x0F << 8); // Character + color attribute
         i++;
     }
 }
@@ -19,5 +19,5 @@ void clear_screen(uint8_t color) {
 
 void clean_print(const char* str) {
     clear_screen(0);
-    print_string(str);
+    print_string(str,0);
 }

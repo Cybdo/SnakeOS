@@ -17,13 +17,16 @@ all: $(TARGET)
 boot.o: boot/boot.s  # Change this line to point to the correct boot.s file location
 	$(AS) -o $@ $<
 
-# Step 2: Compile kernel.o
+# Step 2: Compile kernel.o and port_io.o
 kernel.o: kernel/kernel.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-# Step 3: Link kernel.bin
-kernel.bin: boot.o kernel.o
-	$(LD) $(LDFLAGS) -o $@ boot.o kernel.o
+port_io.o: kernel/port_io.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Step 3: Link kernel.bin (add port_io.o)
+kernel.bin: boot.o kernel.o port_io.o
+	$(LD) $(LDFLAGS) -o $@ boot.o kernel.o port_io.o
 
 # Step 4: Set up ISO directory structure
 $(ISO_DIR)/boot/kernel.bin: kernel.bin
